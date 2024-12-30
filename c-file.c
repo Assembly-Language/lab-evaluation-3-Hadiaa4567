@@ -1,35 +1,26 @@
-
 #include <stdio.h>
 
-
-//extern "C" void __stdcall asmfunc(void);
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void __stdcall asmfunc(int p1 ,int p2);
-
-#ifdef __cplusplus
-}
-#endif
-
-
 int main() {
-    system("cls");
-    int abc;
-    printf("assembly proc calling from  from C! \n");
-getch();
+    // Example array with both positive and negative values
+    int array[] = {-3, -6, -1, -10, 10, 30, 40, 4};
+    int length = sizeof(array) / sizeof(array[0]); // Calculate length of the array
+    int sum = 0;                                   // Variable to store the sum of positive values
+    int foundPositive = 0;                         // Flag to check if a positive number exists
 
-    
-    asmfunc(3,5); //assembly proc calling
-   
-   getch();
-    
-    
-    printf("back to  C! \n"); // printing in c
-    
-  
-    
+    // Iterate through the array
+    for (int i = 0; i < length; i++) {
+        if (array[i] > 0) {                        // Check if the current element is positive
+            sum += array[i];                       // Add positive value to sum
+            foundPositive = 1;                     // Mark that a positive number was found
+        }
+    }
+
+    // Output results
+    if (foundPositive) {
+        printf("Sum of all positive values is: %d\n", sum);
+    } else {
+        printf("No positive values found in the array!\n");
+    }
+
     return 0;
 }
